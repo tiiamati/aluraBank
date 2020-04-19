@@ -14,7 +14,7 @@ export function logarTempoDeExecucao(emSegundos: boolean = false) {
                 divisor = 1000;
             }
 
-            console.log('--------------');
+            console.log("------ Começo dados timeout ------");
             console.log(`parâmetros passados para o método ${propertyKey}: ${JSON.stringify(args)}`);
             
             const t1 = performance.now();
@@ -23,7 +23,7 @@ export function logarTempoDeExecucao(emSegundos: boolean = false) {
 
             console.log(`o retorno do método ${propertyKey} é ${JSON.stringify(retorno)}`);
             console.log(`o método demorou ${(t2 - t1)/divisor} ${unidade}`)
-            console.log('--------------');
+            console.log("------ Fim dados timeout ------");
 
             return retorno;
         }

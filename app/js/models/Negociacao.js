@@ -14,6 +14,14 @@ System.register([], function (exports_1, context_1) {
                 get volume() {
                     return this.quantidade * this.valor;
                 }
+                paraTexto() {
+                    console.log("------ Començo de Console log de Negociação! ------");
+                    console.log(`Data: ${this.data}
+            Quantidade: ${this.quantidade}
+            Valor: ${this.valor}
+            Volume: ${this.volume}`);
+                    console.log("------ Fim de Console log de Negociação! ------");
+                }
             };
             exports_1("Negociacao", Negociacao);
         }

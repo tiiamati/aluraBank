@@ -1,7 +1,8 @@
-import {NegociacoesView, MensagemView} from '../views/index';
-import {Negociacoes, Negociacao, NegociacaoParcial} from '../models/index';
-import {domInject, throttle} from '../helpers/decorators/index';
-import {NegociacaoService} from '../services/index';
+import { NegociacoesView, MensagemView } from '../views/index';
+import { Negociacoes, Negociacao } from '../models/index';
+import { domInject, throttle } from '../helpers/decorators/index';
+import { NegociacaoService } from '../services/index';
+import { imprime } from '../helpers/index';
 
 let timer = 0;
 
@@ -25,6 +26,7 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
 
+    @throttle()
     adiciona() {
         
         let data = new Date(this._inputData.val().replace(/-/g, ','));
@@ -35,17 +37,16 @@ export class NegociacaoController {
         }
 
         const negociacao = new Negociacao(
-            new Date(this._inputData.val().replace(/-/g, ',')), 
+            data,
             parseInt(this._inputQuantidade.val()), 
             parseFloat(this._inputValor.val())
         );
-        
+
         this._negociacoes.adiciona(negociacao);
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update("Negociação adicionada com sucesso!");
 
-        //console.log(negociacao);
-        //alert('minha logica aqui');
+        imprime(negociacao, this._negociacoes);
     }
 
     private _ehDiaUtil(data: Date) {
@@ -55,10 +56,6 @@ export class NegociacaoController {
 
     @throttle()
     importaDados() {
-
-        function isOk(res: Response) {
-            
-        }
 
         this._service
             .obterNegociacoes(res => {
