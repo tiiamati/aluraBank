@@ -1,8 +1,7 @@
 import { Negociacao } from './Negociacao'; 
-import { Imprimivel } from './Imprimivel';
+import { MeuObjeto } from './MeuObjeto';
 
-
-export class Negociacoes implements Imprimivel {
+export class Negociacoes implements MeuObjeto<Negociacoes> {
 
     private _negociacoes: Negociacao[] = [];
 
@@ -16,11 +15,16 @@ export class Negociacoes implements Imprimivel {
 
     paraTexto(): void {
 
-        console.log("------ Començo de Console log de Negociações! ------");
+        /*console.log("------ Començo de Console log de Negociações! ------");
 
         console.log(JSON.stringify(this._negociacoes));
 
-        console.log("------ Fim de Console log de Negociações! ------");
+        console.log("------ Fim de Console log de Negociações! ------");*/
+    }
+
+    ehIgual(negociacoes: Negociacoes): boolean {
+
+        return JSON.stringify(this._negociacoes) == JSON.stringify(negociacoes.paraArray());
     }
 
 }

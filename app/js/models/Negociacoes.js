@@ -16,9 +16,9 @@ System.register([], function (exports_1, context_1) {
                     return [].concat(this._negociacoes);
                 }
                 paraTexto() {
-                    console.log("------ Començo de Console log de Negociações! ------");
-                    console.log(JSON.stringify(this._negociacoes));
-                    console.log("------ Fim de Console log de Negociações! ------");
+                }
+                ehIgual(negociacoes) {
+                    return JSON.stringify(this._negociacoes) == JSON.stringify(negociacoes.paraArray());
                 }
             };
             exports_1("Negociacoes", Negociacoes);

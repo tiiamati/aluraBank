@@ -15,12 +15,11 @@ System.register([], function (exports_1, context_1) {
                     return this.quantidade * this.valor;
                 }
                 paraTexto() {
-                    console.log("------ Començo de Console log de Negociação! ------");
-                    console.log(`Data: ${this.data}
-            Quantidade: ${this.quantidade}
-            Valor: ${this.valor}
-            Volume: ${this.volume}`);
-                    console.log("------ Fim de Console log de Negociação! ------");
+                }
+                ehIgual(negociacao) {
+                    return this.data.getDate() == negociacao.data.getDate()
+                        && this.data.getMonth() == negociacao.data.getMonth()
+                        && this.data.getFullYear() == negociacao.data.getFullYear();
                 }
             };
             exports_1("Negociacao", Negociacao);

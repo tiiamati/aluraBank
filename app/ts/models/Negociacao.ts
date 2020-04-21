@@ -1,6 +1,6 @@
-import { Imprimivel } from './Imprimivel';
+import { MeuObjeto } from './MeuObjeto';
 
-export class Negociacao implements Imprimivel {
+export class Negociacao implements MeuObjeto<Negociacao> {
 
     constructor(readonly data: Date, readonly quantidade: number, readonly valor: number){}
 
@@ -9,7 +9,7 @@ export class Negociacao implements Imprimivel {
     }
 
     paraTexto(): void {
-        console.log("------ Començo de Console log de Negociação! ------");
+        /*console.log("------ Començo de Console log de Negociação! ------");
         
         console.log(
             `Data: ${this.data}
@@ -18,6 +18,13 @@ export class Negociacao implements Imprimivel {
             Volume: ${this.volume}`
         );
 
-        console.log("------ Fim de Console log de Negociação! ------");
+        console.log("------ Fim de Console log de Negociação! ------");*/
+    }
+
+    ehIgual(negociacao: Negociacao): boolean {
+
+        return this.data.getDate() == negociacao.data.getDate() 
+            && this.data.getMonth() == negociacao.data.getMonth()
+            && this.data.getFullYear() == negociacao.data.getFullYear();
     }
 }
